@@ -1,0 +1,54 @@
+{
+  "name": "egg-catbox",
+  "version": "1.0.0",
+  "description": "Catbox plugin for eggjs",
+  "eggPlugin": {
+    "name": "catbox"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "catbox",
+    "cache"
+  ],
+  "dependencies": {
+    "catbox": "^7.1.3",
+    "catbox-memory": "^2.0.4"
+  },
+  "devDependencies": {
+    "autod": "^2.7.1",
+    "egg": "^1.0.0",
+    "egg-bin": "^3.3.0",
+    "egg-ci": "^1.3.0",
+    "egg-mock": "^3.0.1",
+    "eslint": "^3.16.1",
+    "eslint-config-egg": "^3.2.0",
+    "supertest": "^3.0.0",
+    "webstorm-disable-index": "^1.1.2"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "6, 7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsw0108/egg-catbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wsw0108/egg-catbox/issues"
+  },
+  "homepage": "https://github.com/wsw0108/egg-catbox#readme",
+  "author": "wsw0108",
+  "license": "MIT"
+}
