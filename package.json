@@ -1,6 +1,6 @@
 {
   "name": "egg-catbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Catbox plugin for eggjs",
   "eggPlugin": {
     "name": "catbox"
