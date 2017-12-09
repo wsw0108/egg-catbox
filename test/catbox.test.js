@@ -17,39 +17,39 @@ describe('test/catbox.test.js', () => {
 
   after(() => app.close());
 
-  beforeEach(function* () {
-    yield app.catbox.set(testKey, testValue, 2000);
+  beforeEach(async () => {
+    await app.catbox.set(testKey, testValue, 2000);
   });
 
-  afterEach(function* () {
-    yield app.catbox.drop(testKey);
+  afterEach(async () => {
+    await app.catbox.drop(testKey);
   });
 
   afterEach(mm.restore);
 
-  it('should get successfully', function* () {
-    const cached = yield app.catbox.get(testKey);
+  it('should get successfully', async () => {
+    const cached = await app.catbox.get(testKey);
     assert.deepEqual(cached.item, testValue);
   });
 
-  it('should set successfully', function* () {
+  it('should set successfully', async () => {
     const id = 'id';
     const segment = 'segment';
     const key = { id, segment };
     const value = 'value';
-    yield app.catbox.set(key, value, 2000);
-    const cached = yield app.catbox.get(key);
+    await app.catbox.set(key, value, 2000);
+    const cached = await app.catbox.get(key);
     assert.deepEqual(cached.item, value);
   });
 
-  it('should drop successfully', function* () {
+  it('should drop successfully', async () => {
     const id = 'id';
     const segment = 'segment';
     const key = { id, segment };
     const value = 'value';
-    yield app.catbox.set(key, value, 2000);
-    yield app.catbox.drop(key);
-    const result = yield app.catbox.get(key);
+    await app.catbox.set(key, value, 2000);
+    await app.catbox.drop(key);
+    const result = await app.catbox.get(key);
     assert(!result);
   });
 });
