@@ -32,10 +32,10 @@ $ npm i egg-catbox --save
 
 ### 依赖的 egg 版本
 
-egg-catbox 版本 | egg 1.x
+egg-catbox 版本 | egg 2.x
 --- | ---
-1.x | 😁
-0.x | ❌
+2.x | 😁
+1.x | ❌
 
 ## 开启插件
 
@@ -51,26 +51,28 @@ exports.catbox = {
 
 ```js
 // {app_root}/app/service/user.js
+const Service = require('egg').Service;
+
 const segment = 'segment';
-module.exports = app => {
-  class UserService extends app.Service {
-    * save(user, ttl) {
-      const id = 'id';
-      const key = { id, segment };
-      yield app.catbox.set(key, user, ttl);
-    }
-    * load(id) {
-      const key = { id, segment };
-      const result = yield app.catbox.get(key);
-      return result ? result.item : null;
-    }
-    * drop(id) {
-      const key = { id, segment };
-      yield app.catbox.drop(key);
-    }
+
+class UserService extends Service {
+  async save(user, ttl) {
+    const id = 'id';
+    const key = { id, segment };
+    await app.catbox.set(key, user, ttl);
   }
-  return UserService;
+  async load(id) {
+    const key = { id, segment };
+    const result = await app.catbox.get(key);
+    return result ? result.item : null;
+  }
+  async drop(id) {
+    const key = { id, segment };
+    await app.catbox.drop(key);
+  }
 }
+
+module.exports = UserService;
 ```
 
 ## 详细配置
