@@ -24,7 +24,7 @@
     "egg-mock": "^3.13.1",
     "eslint": "^5.6.0",
     "eslint-config-egg": "^7.1.0",
-    "supertest": "^3.0.0",
+    "supertest": "^4.0.2",
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
